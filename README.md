@@ -16,7 +16,7 @@ Personal portfolio website of Andrei Zakharenkov, Java Backend Developer availab
 
 Static portfolio website built as a single self-contained `index.html` file — no frameworks, no build step, no external dependencies. All assets (photo, screenshots) are Base64-embedded.
 
-**Live:** [zahaand.dev](https://zahaand.dev)
+**Live:** [zahaand.dev](https://zahaand-dev.vercel.app)
 
 ## Features
 
@@ -98,7 +98,7 @@ Static portfolio website built as a single self-contained `index.html` file — 
 
 Статический сайт-портфолио в виде единого самодостаточного файла `index.html` — без фреймворков, без сборки, без внешних зависимостей. Все ресурсы (фото, скриншоты) встроены как Base64.
 
-**Сайт:** [zahaand.dev](https://zahaand.dev)
+**Сайт:** [zahaand.dev](https://zahaand-dev.vercel.app)
 
 ## Возможности
 
