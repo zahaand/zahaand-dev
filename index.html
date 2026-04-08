@@ -174,6 +174,15 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
   .json-box{max-width:100%;}
 }
 @media(max-width:480px){.skills-grid{grid-template-columns:1fr;}.btn{flex:1;text-align:center;justify-content:center;}}
+
+.srv-btn-wrap{position:relative;width:100%;margin-top:auto;}
+.srv-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid var(--blue);border-radius:6px;padding:8px 14px;font-size:11px;color:var(--blue);cursor:pointer;font-family:inherit;transition:background .15s,color .15s;width:100%;font-weight:500;}
+.srv-btn:hover{background:var(--blue);color:#fff;}
+.srv-dropdown{display:none;position:absolute;bottom:calc(100% + 6px);left:0;right:0;background:var(--bg2);border:1px solid var(--border2);border-radius:7px;overflow:hidden;z-index:50;box-shadow:0 4px 16px var(--shadow);}
+.srv-dropdown.open{display:block;}
+.srv-drop-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:11px;color:var(--muted);cursor:pointer;transition:background .15s,color .15s;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;}
+.srv-drop-item:hover{background:var(--bg3);color:var(--text);}
+.srv-drop-item+.srv-drop-item{border-top:1px solid var(--border);}
 </style>
 </head>
 <body>
@@ -321,19 +330,37 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
       <div class="srv-title" id="srv1-t">Backend-сервис</div>
       <div class="srv-desc" id="srv1-d">Серверная логика с нуля: REST API, авторизация, работа с базой данных, события через Kafka, интеграции, уведомления. Чистая архитектура, тесты, API-документация.</div>
       <div class="srv-tags"><span class="srv-tag">Java 21</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">PostgreSQL</span><span class="srv-tag">Kafka</span><span class="srv-tag">JWT</span><span class="srv-tag">Swagger</span></div>
-      <button class="srv-btn" onclick="window.location.href='tel:+79215800706'" id="srv1-btn">Обсудить проект &rarr;</button>
+      <div class="srv-btn-wrap">
+      <button class="srv-btn" onclick="toggleDrop(this)" id="srv1-btn">Обсудить проект &#9652;</button>
+      <div class="srv-dropdown">
+        <a class="srv-drop-item" href="tel:+79215800706">&#128222; Позвонить</a>
+        <a class="srv-drop-item" href="https://t.me/zahaand" target="_blank" rel="noopener">&#128172; Telegram</a>
+      </div>
+    </div>
     </div>
     <div class="srv-card">
       <div class="srv-title" id="srv2-t">Fullstack веб-приложение</div>
       <div class="srv-desc" id="srv2-d">Полноценное веб-приложение: React-фронтенд + Java-бэкенд. Дашборды, личные кабинеты, SaaS-инструменты, B2B-продукты. Адаптивный интерфейс, TypeScript, деплой.</div>
       <div class="srv-tags"><span class="srv-tag">React 18</span><span class="srv-tag">TypeScript</span><span class="srv-tag">Java</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">PostgreSQL</span></div>
-      <button class="srv-btn" onclick="window.location.href='tel:+79215800706'" id="srv2-btn">Обсудить проект &rarr;</button>
+      <div class="srv-btn-wrap">
+      <button class="srv-btn" onclick="toggleDrop(this)" id="srv2-btn">Обсудить проект &#9652;</button>
+      <div class="srv-dropdown">
+        <a class="srv-drop-item" href="tel:+79215800706">&#128222; Позвонить</a>
+        <a class="srv-drop-item" href="https://t.me/zahaand" target="_blank" rel="noopener">&#128172; Telegram</a>
+      </div>
+    </div>
     </div>
     <div class="srv-card">
       <div class="srv-title" id="srv3-t">Telegram Bot</div>
       <div class="srv-desc" id="srv3-d">Боты любой сложности: inline-меню, БД, напоминания, интеграции с внешними сервисами, многоязычность, личный кабинет пользователя. Деплой и поддержка.</div>
       <div class="srv-tags"><span class="srv-tag">Java 21</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">Telegram Bot API</span><span class="srv-tag">PostgreSQL</span></div>
-      <button class="srv-btn" onclick="window.location.href='tel:+79215800706'" id="srv3-btn">Обсудить проект &rarr;</button>
+      <div class="srv-btn-wrap">
+      <button class="srv-btn" onclick="toggleDrop(this)" id="srv3-btn">Обсудить проект &#9652;</button>
+      <div class="srv-dropdown">
+        <a class="srv-drop-item" href="tel:+79215800706">&#128222; Позвонить</a>
+        <a class="srv-drop-item" href="https://t.me/zahaand" target="_blank" rel="noopener">&#128172; Telegram</a>
+      </div>
+    </div>
     </div>
   </div>
 </section>
@@ -426,7 +453,7 @@ var T={
     srv1t:'Backend-сервис',srv1d:'Серверная логика с нуля: REST API, авторизация, работа с базой данных, события через Kafka, интеграции, уведомления. Чистая архитектура, тесты, API-документация.',
     srv2t:'Fullstack веб-приложение',srv2d:'Полноценное веб-приложение: React-фронтенд + Java-бэкенд. Дашборды, личные кабинеты, SaaS-инструменты, B2B-продукты. Адаптивный интерфейс, TypeScript, деплой.',
     srv3t:'Telegram Bot',srv3d:'Боты любой сложности: inline-меню, БД, напоминания, интеграции с внешними сервисами, многоязычность, личный кабинет. Деплой и поддержка.',
-    srv1btn:'Обсудить проект →',srv2btn:'Обсудить проект →',srv3btn:'Обсудить проект →',
+    srv1btn:'Обсудить проект ▲',srv2btn:'Обсудить проект ▲',srv3btn:'Обсудить проект ▲',
     letterQ:'«Андрей Игоревич неоднократно проявлял инициативу при выявлении потенциальных рисков на ранних этапах, предлагая альтернативные подходы, которые позволяли избежать технического долга и сократить сроки реализации. Ответственный, дисциплинированный и коммуникабельный специалист с выраженными лидерскими качествами.»',
     ctTitle:'Готов к новым проектам!',ctSub:'Фриланс · Backend · Fullstack · Telegram Bots · Remote',
     btnCall:'📞 Позвонить',btnEmail:'Email',
@@ -445,7 +472,7 @@ var T={
     srv1t:'Backend Service',srv1d:'Server-side logic from scratch: REST API, auth, database, Kafka events, integrations, notifications. Clean architecture, tests, API docs.',
     srv2t:'Fullstack Web App',srv2d:'Complete web application: React frontend + Java backend. Dashboards, user portals, SaaS tools, B2B products. Responsive UI, TypeScript, deployment.',
     srv3t:'Telegram Bot',srv3d:'Bots of any complexity: inline menus, database, reminders, external integrations, multilingual, user accounts. Deployment & support.',
-    srv1btn:'Discuss the project →',srv2btn:'Discuss the project →',srv3btn:'Discuss the project →',
+    srv1btn:'Discuss the project ▲',srv2btn:'Discuss the project ▲',srv3btn:'Discuss the project ▲',
     letterQ:'"Andrei repeatedly took initiative in identifying potential risks at early stages, proposing alternative approaches that helped avoid technical debt and reduce delivery timelines. A responsible, disciplined, and communicative specialist with strong leadership qualities." — Official recommendation letter, MKSKOM LLC',
     ctTitle:'Ready for new projects!',ctSub:'Freelance · Backend · Fullstack · Telegram Bots · Remote',
     btnCall:'📞 Call',btnEmail:'Email',
@@ -670,6 +697,23 @@ function gameOver(ctx){
   ctx.fillStyle='#58a6ff';ctx.font='11px monospace';ctx.fillText('zahaand@gmail.com · @zahaand',200,188);
   setTimeout(function(){document.removeEventListener('keydown',onGK);document.removeEventListener('keyup',onGKU);},100);
 }
+
+function toggleDrop(btn){
+  var drop=btn.nextElementSibling;
+  var isOpen=drop.classList.contains('open');
+  // close all
+  document.querySelectorAll('.srv-dropdown').forEach(function(d){d.classList.remove('open');});
+  document.querySelectorAll('.srv-btn').forEach(function(b){b.innerHTML=b.innerHTML.replace('&#9660;','&#9652;');});
+  if(!isOpen){
+    drop.classList.add('open');
+  }
+}
+// close dropdown on outside click
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.srv-btn-wrap')){
+    document.querySelectorAll('.srv-dropdown').forEach(function(d){d.classList.remove('open');});
+  }
+});
 </script>
 </body>
 </html>
