@@ -117,7 +117,7 @@ a{text-decoration:none;color:inherit;}
 /* SERVICES */
 .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .srv-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px 18px 14px;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column;}
-.srv-card:hover{border-color:var(--border2);box-shadow:0 2px 12px var(--shadow);}
+.srv-card:hover{border-color:var(--green);box-shadow:0 0 0 1px var(--green);}
 .srv-title{font-size:13px;color:var(--text);font-weight:500;margin-bottom:8px;}
 .srv-desc{font-size:11px;color:var(--muted);line-height:1.7;flex:1;}
 .srv-tags{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0;}
@@ -215,7 +215,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
   <div>
     <div class="t-prompt">~/portfolio $ whoami</div>
     <h1 class="hero-name" id="hero-name"><em>Захаренков</em> Андрей</h1>
-    <p class="hero-sub" id="hero-sub">Java Backend Developer &middot; <strong>5 лет опыта</strong> &middot; ex-тимлид &middot; фриланс</p>
+    <p class="hero-sub" id="hero-sub">Java Backend Developer &middot; <strong>5+ лет опыта</strong> &middot; ex-тимлид &middot; фриланс</p>
     <div class="json-box">
       <div class="json-hdr">
         <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
@@ -234,7 +234,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
       <div style="margin-top:10px;font-size:12px;display:flex;gap:8px;"><span class="tp">$</span><span class="cursor"></span></div>
     </div>
     <div class="badges">
-      <span class="badge badge-g" id="badge-open">Open to work</span>
+      <span class="badge badge-g" id="badge-open">Открыт к работе</span>
       <span class="badge badge-b">Backend</span>
       <span class="badge badge-b">Fullstack</span>
       <span class="badge badge-p">Telegram Bots</span>
@@ -443,9 +443,9 @@ function setTheme(t){
 var T={
   ru:{
     heroName:'<em>Захаренков</em> Андрей',
-    heroSub:'Java Backend Developer &middot; <strong>5 лет опыта</strong> &middot; ex-тимлид &middot; фриланс',
+    heroSub:'Java Backend Developer &middot; <strong>5+ лет опыта</strong> &middot; ex-тимлид &middot; фриланс',
     jExp:'"5 лет (МКСКОМ, 2023&ndash;2026)"',jStatus:'"доступен для найма"',
-    badgeOpen:'Доступен',photoLbl:'Андрей<br>Захаренков',
+    badgeOpen:'Открыт к работе',photoLbl:'Андрей<br>Захаренков',
     s1:'// навыки и технологии',s2:'// проекты',s3:'// telegram bots',s4:'// услуги',s5:'// интерактивный терминал',s6:'// рекомендация',
     p1:'Бэкенд трекера привычек и целей. Гексагональная архитектура, 6 Maven-модулей, Kafka EDA, JWT RS256, Telegram-уведомления. 32 REST endpoint, 6 Kafka consumers, 251 тест.',
     p2:'React SPA для трекинга привычек и целей. Дашборд, стрики, история выполнения, профиль с умным приветствием. Полная типизация TypeScript.',
@@ -462,7 +462,7 @@ var T={
   },
   en:{
     heroName:'<em>Zakharenkov</em> Andrei',
-    heroSub:'Java Backend Developer &middot; <strong>5 years exp</strong> &middot; ex-team-lead &middot; freelance',
+    heroSub:'Java Backend Developer &middot; <strong>5+ years exp</strong> &middot; ex-team-lead &middot; freelance',
     jExp:'"5 years (MKSKOM, 2023&ndash;2026)"',jStatus:'"available for hire"',
     badgeOpen:'Open to work',photoLbl:'Andrei<br>Zakharenkov',
     s1:'// skills & technologies',s2:'// projects',s3:'// telegram bots',s4:'// services',s5:'// interactive terminal',s6:'// recommendation',
