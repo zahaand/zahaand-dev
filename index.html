@@ -121,7 +121,8 @@ a{text-decoration:none;color:inherit;}
 .srv-title{font-size:13px;color:var(--text);font-weight:500;margin-bottom:8px;}
 .srv-desc{font-size:11px;color:var(--muted);line-height:1.7;flex:1;}
 .srv-tags{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0;}
-.srv-tag{font-size:10px;padding:2px 6px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--dim);}
+.srv-tag{font-size:10px;padding:2px 6px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--dim);transition:color .15s,border-color .15s;}
+.srv-card:hover .srv-tag{color:var(--green);border-color:var(--green);}
 .srv-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid var(--blue);border-radius:6px;padding:8px 14px;font-size:11px;color:var(--blue);cursor:pointer;font-family:inherit;transition:background .15s,color .15s;width:100%;margin-top:auto;font-weight:500;}
 .srv-btn:hover{background:var(--blue);color:#fff;}
 /* RECOMMENDATION */
