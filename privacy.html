@@ -3,21 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Политика конфиденциальности — zahaand.dev</title>
-<meta name="description" content="Политика конфиденциальности сайта zahaand.dev"/>
+<title>Privacy Policy — zahaand.dev</title>
 <meta name="robots" content="noindex, follow"/>
 <style>
 :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#21262d;--border2:#30363d;--text:#e6edf3;--text2:#c9d1d9;--muted:#8b949e;--dim:#484f58;--blue:#58a6ff;--green:#3fb950;}
 [data-theme="light"]{--bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--border2:#afb8c1;--text:#1f2328;--text2:#424a53;--muted:#636c76;--dim:#9198a1;--blue:#0969da;--green:#1a7f37;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:13px;line-height:1.7;min-height:100vh;}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:13px;line-height:1.7;min-height:100vh;transition:background .3s,color .3s;}
 a{color:var(--blue);text-decoration:none;}a:hover{text-decoration:underline;}
 .nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:13px 40px;background:rgba(13,17,23,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 [data-theme="light"] .nav{background:rgba(255,255,255,0.93);}
-.nav-logo{font-size:15px;color:var(--blue);font-weight:600;letter-spacing:-0.5px;}
+.nav-logo{font-size:15px;color:var(--blue);font-weight:600;letter-spacing:-0.5px;text-decoration:none;}
 .nav-logo span{color:#7c3aed;}
-.nav-back{font-size:11px;color:var(--muted);transition:color .15s;}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.nav-back{font-size:11px;color:var(--muted);transition:color .15s;text-decoration:none;}
 .nav-back:hover{color:var(--text);}
+.controls{display:flex;gap:6px;}
+.lang-toggle,.theme-toggle{display:flex;background:var(--bg2);border:1px solid var(--border2);border-radius:5px;overflow:hidden;}
+.lang-btn,.theme-btn{padding:4px 9px;font-size:10px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:inherit;transition:background .15s,color .15s;}
+.lang-btn.active,.theme-btn.active{background:#1f6feb;color:#fff;}
+[data-theme="light"] .lang-btn.active,[data-theme="light"] .theme-btn.active{background:var(--blue);color:#fff;}
 .wrap{max-width:720px;margin:0 auto;padding:48px 40px 80px;}
 .prompt{font-size:11px;color:var(--green);font-family:'Courier New',monospace;margin-bottom:16px;}
 h1{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
@@ -33,24 +38,41 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--green);}
 .contact-block p{margin-bottom:4px;}
 footer{text-align:center;padding:24px 40px;border-top:1px solid var(--border);font-size:10px;color:var(--dim);}
 footer span{color:var(--green);}
+.lang-section{display:none;}
+.lang-section.active{display:block;}
 @media(max-width:600px){.nav{padding:12px 16px;}.wrap{padding:32px 16px 60px;}}
 </style>
 </head>
 <body>
 <nav class="nav">
   <a href="/" class="nav-logo">zahaand<span>.</span>dev</a>
-  <a href="/" class="nav-back">← вернуться на сайт</a>
+  <div class="nav-right">
+    <a href="/" class="nav-back" id="nav-back">← вернуться на сайт</a>
+    <div class="controls">
+      <div class="theme-toggle">
+        <button class="theme-btn active" id="tbtn-dark" onclick="setTheme('dark')">🌙</button>
+        <button class="theme-btn" id="tbtn-light" onclick="setTheme('light')">☀️</button>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="lbtn-ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" id="lbtn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
 </nav>
+
+<!-- RU -->
+<div class="lang-section active" id="section-ru">
 <div class="wrap">
   <div class="prompt">~/privacy $ cat policy.md</div>
   <h1>Политика конфиденциальности</h1>
   <div class="subtitle">Последнее обновление: апрель 2026 &nbsp;·&nbsp; zahaand.dev</div>
 
   <h2>Общие положения</h2>
-  <p>Настоящая политика конфиденциальности описывает, какие данные собираются при посещении сайта <a href="https://zahaand.dev">zahaand.dev</a>, как они используются и как защищаются. Сайт является личным портфолио физического лица — Захаренкова Андрея Игоревича.</p>
+  <p>Настоящая политика описывает, какие данные собираются при посещении сайта <a href="https://zahaand.dev">zahaand.dev</a>, как они используются и защищаются. Сайт является личным портфолио Захаренкова Андрея Игоревича.</p>
 
   <h2>Сбор данных</h2>
-  <p>Сайт не содержит форм регистрации, форм обратной связи и не собирает персональные данные напрямую. При посещении сайта автоматически могут собираться следующие технические данные:</p>
+  <p>Сайт не содержит форм регистрации и не собирает персональные данные напрямую. При посещении автоматически могут собираться технические данные:</p>
   <ul>
     <li>IP-адрес и данные браузера (в целях аналитики)</li>
     <li>Страницы и разделы, которые вы посещаете</li>
@@ -61,28 +83,29 @@ footer span{color:var(--green);}
   <h2>Файлы cookie</h2>
   <p>Сайт использует файлы cookie в следующих целях:</p>
   <ul>
-    <li><span class="tag">localStorage</span> — сохранение выбранной темы оформления (тёмная / светлая)</li>
+    <li><span class="tag">localStorage</span> — сохранение выбранной темы (тёмная / светлая)</li>
+    <li><span class="tag">localStorage</span> — сохранение выбранного языка (RU / EN)</li>
     <li><span class="tag">localStorage</span> — сохранение факта принятия политики cookie</li>
-    <li><span class="tag">Яндекс.Метрика</span> — анонимная веб-аналитика: количество посетителей, источники трафика, поведение на сайте</li>
+    <li><span class="tag">Яндекс.Метрика</span> — анонимная веб-аналитика: посетители, источники, поведение</li>
   </ul>
-  <p>Данные Яндекс.Метрики обрабатываются в соответствии с <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">политикой конфиденциальности Яндекса</a>. Вы можете отключить сбор данных Яндекс.Метрикой, установив <a href="https://yandex.ru/support/metrica/general/opt-out.html" target="_blank" rel="noopener">opt-out браузерный плагин</a>.</p>
+  <p>Данные Яндекс.Метрики обрабатываются согласно <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">политике конфиденциальности Яндекса</a>. Отключить сбор можно через <a href="https://yandex.ru/support/metrica/general/opt-out.html" target="_blank" rel="noopener">opt-out плагин</a>.</p>
 
   <h2>Передача данных третьим лицам</h2>
-  <p>Данные посетителей не продаются и не передаются третьим лицам, за исключением сервиса веб-аналитики Яндекс.Метрика, который обрабатывает данные в соответствии со своей политикой.</p>
+  <p>Данные не продаются и не передаются третьим лицам, за исключением Яндекс.Метрики, обрабатывающей их согласно своей политике.</p>
 
-  <h2>Контактные ссылки</h2>
-  <p>На сайте размещены ссылки для связи. При переходе по ним вы покидаете сайт и попадаете во внешние сервисы (Telegram, Gmail, GitHub), которые имеют собственные политики конфиденциальности.</p>
+  <h2>Внешние ссылки</h2>
+  <p>На сайте есть ссылки на внешние сервисы (Telegram, Gmail, GitHub). При переходе вы покидаете сайт — эти сервисы имеют собственные политики конфиденциальности.</p>
 
   <h2>Права пользователей</h2>
-  <p>В соответствии с Федеральным законом № 152-ФЗ «О персональных данных» вы имеете право:</p>
+  <p>В соответствии с 152-ФЗ «О персональных данных» вы вправе:</p>
   <ul>
     <li>Запросить информацию о хранящихся данных</li>
     <li>Потребовать удаления данных</li>
-    <li>Отозвать согласие на обработку данных</li>
+    <li>Отозвать согласие на обработку</li>
   </ul>
 
   <h2>Изменения политики</h2>
-  <p>Политика конфиденциальности может обновляться. Актуальная версия всегда доступна по адресу <a href="https://zahaand.dev/privacy.html">zahaand.dev/privacy.html</a>. Продолжение использования сайта после изменений означает согласие с обновлённой политикой.</p>
+  <p>Актуальная версия всегда доступна на <a href="https://zahaand.dev/privacy.html">zahaand.dev/privacy.html</a>. Продолжение использования сайта означает согласие с обновлениями.</p>
 
   <div class="contact-block">
     <p style="color:var(--text);margin-bottom:8px;">Вопросы по обработке данных:</p>
@@ -90,13 +113,96 @@ footer span{color:var(--green);}
     <p>💬 <a href="https://t.me/zahaand" target="_blank" rel="noopener">@zahaand</a></p>
   </div>
 </div>
-<footer>
+</div>
+
+<!-- EN -->
+<div class="lang-section" id="section-en">
+<div class="wrap">
+  <div class="prompt">~/privacy $ cat policy.md</div>
+  <h1>Privacy Policy</h1>
+  <div class="subtitle">Last updated: April 2026 &nbsp;·&nbsp; zahaand.dev</div>
+
+  <h2>General</h2>
+  <p>This policy describes what data is collected when visiting <a href="https://zahaand.dev">zahaand.dev</a>, how it is used and protected. The website is a personal portfolio of Andrei Zakharenkov.</p>
+
+  <h2>Data Collection</h2>
+  <p>The site does not contain registration forms and does not collect personal data directly. The following technical data may be collected automatically:</p>
+  <ul>
+    <li>IP address and browser data (for analytics purposes)</li>
+    <li>Pages and sections you visit</li>
+    <li>Visit time and duration</li>
+    <li>Traffic source</li>
+  </ul>
+
+  <h2>Cookies</h2>
+  <p>The site uses cookies for the following purposes:</p>
+  <ul>
+    <li><span class="tag">localStorage</span> — saving the selected theme (dark / light)</li>
+    <li><span class="tag">localStorage</span> — saving the selected language (RU / EN)</li>
+    <li><span class="tag">localStorage</span> — saving cookie consent</li>
+    <li><span class="tag">Yandex.Metrika</span> — anonymous web analytics: visitors, sources, behavior</li>
+  </ul>
+  <p>Yandex.Metrika data is processed according to <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">Yandex's privacy policy</a>. You can opt out via the <a href="https://yandex.ru/support/metrica/general/opt-out.html" target="_blank" rel="noopener">opt-out browser plugin</a>.</p>
+
+  <h2>Third Party Data Sharing</h2>
+  <p>Data is not sold or transferred to third parties, except for Yandex.Metrika which processes it under its own policy.</p>
+
+  <h2>External Links</h2>
+  <p>The site contains links to external services (Telegram, Gmail, GitHub). When you follow them you leave this site — those services have their own privacy policies.</p>
+
+  <h2>User Rights</h2>
+  <p>You have the right to:</p>
+  <ul>
+    <li>Request information about stored data</li>
+    <li>Request deletion of data</li>
+    <li>Withdraw consent to data processing</li>
+  </ul>
+
+  <h2>Policy Updates</h2>
+  <p>The current version is always available at <a href="https://zahaand.dev/privacy.html">zahaand.dev/privacy.html</a>. Continued use of the site means agreement with any updates.</p>
+
+  <div class="contact-block">
+    <p style="color:var(--text);margin-bottom:8px;">Questions about data processing:</p>
+    <p>📧 <a href="mailto:zahaand@gmail.com">zahaand@gmail.com</a></p>
+    <p>💬 <a href="https://t.me/zahaand" target="_blank" rel="noopener">@zahaand</a></p>
+  </div>
+</div>
+</div>
+
+<footer id="footer-text">
   <span>zahaand.dev</span> · Политика конфиденциальности · 2026
 </footer>
+
 <script>
-// theme sync with main site
-var theme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', theme);
+// Sync theme and lang from main site
+var savedTheme = localStorage.getItem('theme') || 'dark';
+var savedLang  = localStorage.getItem('lang')  || 'ru';
+
+function setTheme(t) {
+  localStorage.setItem('theme', t);
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('tbtn-dark').classList.toggle('active', t === 'dark');
+  document.getElementById('tbtn-light').classList.toggle('active', t === 'light');
+}
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  document.getElementById('lbtn-ru').classList.toggle('active', l === 'ru');
+  document.getElementById('lbtn-en').classList.toggle('active', l === 'en');
+  document.getElementById('section-ru').classList.toggle('active', l === 'ru');
+  document.getElementById('section-en').classList.toggle('active', l === 'en');
+  document.getElementById('nav-back').textContent = l === 'en' ? '← back to site' : '← вернуться на сайт';
+  document.getElementById('footer-text').innerHTML =
+    l === 'en'
+      ? '<span>zahaand.dev</span> · Privacy Policy · 2026'
+      : '<span>zahaand.dev</span> · Политика конфиденциальности · 2026';
+  document.documentElement.lang = l;
+  document.title = l === 'en' ? 'Privacy Policy — zahaand.dev' : 'Политика конфиденциальности — zahaand.dev';
+}
+
+// Init
+setTheme(savedTheme);
+setLang(savedLang);
 </script>
 </body>
 </html>
