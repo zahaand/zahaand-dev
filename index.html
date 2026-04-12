@@ -428,7 +428,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
     </div>
     <div class="term-input-row">
       <span class="term-prompt-lbl">zahaand.dev:~$</span>
-      <input id="term-input" type="text" placeholder="type a command..." autocomplete="off" spellcheck="false" aria-label="Terminal input"/>
+      <input id="term-input" type="text" id="term-placeholder" placeholder="type a command..." autocomplete="off" spellcheck="false" aria-label="Terminal input"/>
     </div>
     <div class="term-hint" id="term-hint">help &middot; whoami &middot; skills &middot; projects &middot; services &middot; contact &middot; fact &middot; play &middot; clear</div>
   </div>
@@ -524,8 +524,12 @@ var T={
     navLinks:['about','skills','projects','bots','services','contact']
   }
 };
+var currentLang=localStorage.getItem('lang')||'ru';
 function setLang(l){
+  currentLang=l;
   localStorage.setItem('lang',l);
+  var ph=document.getElementById('term-placeholder');
+  if(ph)ph.placeholder=l==='en'?'type a command...':'введи команду...';
   var t=T[l];
   document.getElementById('lbtn-ru').classList.toggle('active',l==='ru');
   document.getElementById('lbtn-en').classList.toggle('active',l==='en');
@@ -604,62 +608,98 @@ function showKonami(){
 
 // TERMINAL
 var CMDS={
-  help:function(){return[
-    {v:'Доступные команды:'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">whoami</span>    — кто я такой'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">skills</span>    — стек технологий'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">projects</span>  — реализованные проекты'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">services</span>  — что могу сделать для вас'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">contact</span>   — как связаться'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">fact</span>      — случайный факт 🎲'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">play</span>      — 🐛 поймай баги до прода'},
-    {v:'&nbsp;&nbsp;<span class="t-hl">clear</span>     — очистить терминал'},
-  ];},
-  whoami:function(){return[
-    {v:'<span class="t-val">Zakharenkov Andrei</span> / Захаренков Андрей'},
-    {v:'Java Backend Developer · 5 лет опыта · ex-тимлид'},
-    {v:'ООО «МКСКОМ» (2023–2026) → фриланс'},
-    {v:'Гексагональная архитектура · Kafka · Spring Boot · PostgreSQL'},
-    {v:'Открыт для проектов · удалённо · по всему миру'},
-    {v:'→ <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
-  ];},
-  skills:function(){return[
-    {v:'<span class="t-hl">Backend:</span>   Java 21 · Spring Boot 3.5 · Maven · Spring Security · Spring Data JPA'},
-    {v:'<span class="t-hl">Data:</span>      PostgreSQL · jOOQ · Hibernate · Liquibase'},
-    {v:'<span class="t-hl">Messaging:</span> Apache Kafka · Event-Driven Architecture'},
-    {v:'<span class="t-hl">API:</span>       REST · JWT RS256 · Swagger/OpenAPI'},
-    {v:'<span class="t-hl">Testing:</span>   JUnit 5 · Mockito · Testcontainers · JaCoCo'},
-    {v:'<span class="t-hl">Frontend:</span>  React 18 · TypeScript · Tailwind v4 · shadcn/ui'},
-    {v:'<span class="t-hl">DevOps:</span>    Git · Docker · Railway · Vercel'},
-    {v:'<span class="t-hl">Bots:</span>      Telegram Bot API'},
-  ];},
-  projects:function(){return[
-    {v:'<span class="t-ok">✓</span> <span class="t-val">LifeSync Backend</span> v1.0.0 → <a href="https://github.com/zahaand/lifesync-backend" style="color:var(--blue)">github</a>'},
-    {v:'&nbsp;&nbsp;&nbsp;32 REST endpoints · 6 Kafka consumers · 251 tests · Hexagonal · Railway'},
-    {v:'<span class="t-ok">✓</span> <span class="t-val">LifeSync Frontend</span> v1.0.0 → <a href="https://github.com/zahaand/lifesync-frontend" style="color:var(--blue)">github</a>'},
-    {v:'&nbsp;&nbsp;&nbsp;React 18 · TypeScript · Tailwind v4 · shadcn/ui · Vercel'},
-    {v:'<span class="t-ok">✓</span> <span class="t-val">smart-task-bot</span> v1.0.0 → <a href="https://github.com/zahaand/smart-task-bot" style="color:var(--blue)">github</a>'},
-    {v:'&nbsp;&nbsp;&nbsp;382 тестов · Railway · EN/RU · напоминания · часовые пояса'},
-  ];},
-  services:function(){return[
-    {v:'1. <span class="t-val">Backend-сервис</span> — Java 21 · Spring Boot · PostgreSQL · Kafka · JWT · Swagger'},
-    {v:'2. <span class="t-val">Fullstack веб-приложение</span> — React · TypeScript · Java · Spring Boot'},
-    {v:'3. <span class="t-val">Telegram Bot</span> — Java 21 · Spring Boot · Telegram Bot API · PostgreSQL'},
-    {v:'→ <a href="mailto:zahaand@gmail.com" style="color:var(--blue)">zahaand@gmail.com</a> / <a href="https://t.me/zahaand" style="color:var(--blue)">@zahaand</a>'},
-  ];},
-  contact:function(){return[
-    {v:'<span class="t-hl">📞</span> <a href="tel:+79215800706" style="color:var(--blue)">+7 (921) 580-07-06</a>'},
-    {v:'<span class="t-hl">💬</span> <a href="https://t.me/zahaand" style="color:var(--blue)">@zahaand</a>'},
-    {v:'<span class="t-hl">📧</span> <a href="mailto:zahaand@gmail.com" style="color:var(--blue)">zahaand@gmail.com</a>'},
-    {v:'<span class="t-hl">🐙</span> <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
-  ];},
+  help:function(){
+    var ru=currentLang!=='en';
+    return ru?[
+      {v:'Доступные команды:'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">whoami</span>    — кто я такой'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">skills</span>    — стек технологий'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">projects</span>  — реализованные проекты'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">services</span>  — что могу сделать для вас'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">contact</span>   — как связаться'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">fact</span>      — случайный факт 🎲'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">play</span>      — 🐛 поймай баги до прода'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">clear</span>     — очистить терминал'},
+    ]:[
+      {v:'Available commands:'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">whoami</span>    — about me'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">skills</span>    — tech stack'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">projects</span>  — portfolio projects'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">services</span>  — what I can build'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">contact</span>   — get in touch'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">fact</span>      — random fact 🎲'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">play</span>      — 🐛 catch bugs before prod'},
+      {v:'&nbsp;&nbsp;<span class="t-hl">clear</span>     — clear terminal'},
+    ];
+  },
+  whoami:function(){
+    var ru=currentLang!=='en';
+    return ru?[
+      {v:'<span class="t-val">Захаренков Андрей</span>'},
+      {v:'Java Backend Developer · 5+ лет опыта · ex-тимлид'},
+      {v:'ООО «МКСКОМ» (2023–2026) → фриланс'},
+      {v:'Гексагональная архитектура · Kafka · Spring Boot · PostgreSQL'},
+      {v:'Открыт для проектов · удалённо · по всему миру'},
+      {v:'→ <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
+    ]:[
+      {v:'<span class="t-val">Andrei Zakharenkov</span>'},
+      {v:'Java Backend Developer · 5+ years exp · ex-team-lead'},
+      {v:'MKSKOM LLC (2023–2026) → Freelance'},
+      {v:'Hexagonal Architecture · Kafka · Spring Boot · PostgreSQL'},
+      {v:'Open for projects · remote · worldwide'},
+      {v:'→ <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
+    ];
+  },
+  skills:function(){
+    var rows=[
+      {k:'Backend',v:'Java 21 · Spring Boot 3.5 · Maven · Spring Security · Spring Data JPA'},
+      {k:'Data',v:'PostgreSQL · jOOQ · Hibernate · Liquibase'},
+      {k:'Messaging',v:'Apache Kafka · Event-Driven Architecture'},
+      {k:'API',v:'REST · JWT RS256 · Swagger/OpenAPI'},
+      {k:'Testing',v:'JUnit 5 · Mockito · Testcontainers · JaCoCo'},
+      {k:'Frontend',v:'React 18 · TypeScript · Tailwind v4 · shadcn/ui'},
+      {k:'DevOps',v:'Git · Docker · Railway · Vercel'},
+      {k:'Bots',v:'Telegram Bot API'},
+    ];
+    return rows.map(function(r){return{v:'<span class="t-hl">'+r.k+':</span> '+r.v};});
+  },
+  projects:function(){
+    var ru=currentLang!=='en';
+    return[
+      {v:'<span class="t-ok">✓</span> <span class="t-val">LifeSync Backend</span> v1.0.0 → <a href="https://github.com/zahaand/lifesync-backend" style="color:var(--blue)">github</a>'},
+      {v:'&nbsp;&nbsp;&nbsp;32 REST endpoints · 6 Kafka consumers · 251 tests · Hexagonal · Railway'},
+      {v:'<span class="t-ok">✓</span> <span class="t-val">LifeSync Frontend</span> v1.0.0 → <a href="https://github.com/zahaand/lifesync-frontend" style="color:var(--blue)">github</a>'},
+      {v:'&nbsp;&nbsp;&nbsp;React 18 · TypeScript · Tailwind v4 · shadcn/ui · Vercel'},
+      {v:'<span class="t-ok">✓</span> <span class="t-val">smart-task-bot</span> v1.0.0 → <a href="https://github.com/zahaand/smart-task-bot" style="color:var(--blue)">github</a>'},
+      {v:'&nbsp;&nbsp;&nbsp;'+(ru?'382 тестов · Railway · EN/RU · напоминания · часовые пояса':'382 tests · Railway · EN/RU · reminders · timezones')},
+    ];
+  },
+  services:function(){
+    var ru=currentLang!=='en';
+    return[
+      {v:'1. <span class="t-val">'+(ru?'Backend-сервис':'Backend Service')+'</span> — Java 21 · Spring Boot · PostgreSQL · Kafka · JWT · Swagger'},
+      {v:'2. <span class="t-val">'+(ru?'Fullstack веб-приложение':'Fullstack Web App')+'</span> — React · TypeScript · Java · Spring Boot'},
+      {v:'3. <span class="t-val">Telegram Bot</span> — Java 21 · Spring Boot · Telegram Bot API · PostgreSQL'},
+      {v:'4. <span class="t-val">'+(ru?'Создание сайта':'Website Development')+'</span> — HTML · CSS · JavaScript · Vercel · SEO'},
+      {v:'→ <a href="mailto:zahaand@gmail.com" style="color:var(--blue)">zahaand@gmail.com</a> / <a href="https://t.me/zahaand" style="color:var(--blue)">@zahaand</a>'},
+    ];
+  },
+  contact:function(){
+    var ru=currentLang!=='en';
+    return[
+      {v:(ru?'<span class="t-hl">📞 Телефон:</span>':'<span class="t-hl">📞 Phone:</span>')+' <a href="tel:+79215800706" style="color:var(--blue)">+7 (921) 580-07-06</a>'},
+      {v:'<span class="t-hl">💬 Telegram:</span> <a href="https://t.me/zahaand" style="color:var(--blue)">@zahaand</a>'},
+      {v:'<span class="t-hl">📧 Email:</span> <a href="mailto:zahaand@gmail.com" style="color:var(--blue)">zahaand@gmail.com</a>'},
+      {v:'<span class="t-hl">🐙 GitHub:</span> <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
+    ];
+  },
   fact:function(){
-    var ru=document.documentElement.lang!=='en';
+    var ru=currentLang!=='en';
     var factsRu=[
       'LifeSync Backend: 32 REST endpoint, 6 Kafka consumers, 19 Liquibase migrations. Всё это — один Maven multi-module проект.',
       'Hexagonal architecture потому что: бизнес-логика не должна знать что снаружи PostgreSQL, а не MongoDB.',
       'smart-task-bot умеет выбирать язык (EN/RU) и часовой пояс прямо в чате. Потому что пользователи живут не только в Москве.',
-      '<code style="color:var(--orange)">git commit -m "fix"</code> — не мой стиль. Conventional Commits, русские тела коммитов, осмысленные сообщения.',
+      '<code style="color:var(--orange)">git commit -m "fix"</code> — не мой стиль. Conventional Commits, осмысленные сообщения каждый раз.',
       '382 теста в smart-task-bot. Потому что "работает на моей машине" — это не production.',
       'jOOQ vs Hibernate: использую оба. jOOQ когда нужен контроль SQL, Hibernate когда нужна скорость разработки.',
       'LifeSync Frontend: Tailwind v4 + shadcn/ui Nova + TanStack Query v5. Написан на TypeScript без единого <code style="color:var(--orange)">any</code>.',
@@ -678,24 +718,35 @@ var CMDS={
     var facts=ru?factsRu:factsEn;
     return[{v:'<span class="t-val">$ fact --random</span>'},{v:facts[Math.floor(Math.random()*facts.length)]}];
   },
-  
   play:function(){setTimeout(openGame,150);return[
     {v:'<span class="t-ok">$ ./catch-bugs --before-prod</span>'},
-    {v:'Загружаю игру... Лови баги до того как они уйдут в прод! 🐛'},
-    {v:'Управление: ← → или A / D'},
+    {v:currentLang!=='en'?'Загружаю игру... Лови баги до того как они уйдут в прод! 🐛':'Loading game... Catch bugs before they reach prod! 🐛'},
+    {v:currentLang!=='en'?'Управление: ← → или A / D':'Controls: ← → or A / D'},
   ];},
   clear:function(){return'__clear__';}
 };
-var tOut=document.getElementById('term-out'),tIn=document.getElementById('term-input');
-function tAdd(html){var d=document.createElement('div');d.innerHTML=html;tOut.appendChild(d);tOut.scrollTop=tOut.scrollHeight;}
+
+// TERMINAL ENGINE
+var tOut=document.getElementById('term-out');
+var tIn=document.getElementById('term-input');
+function tAdd(html){
+  var d=document.createElement('div');
+  d.innerHTML=html;
+  tOut.appendChild(d);
+  tOut.scrollTop=tOut.scrollHeight;
+}
 tIn.addEventListener('keydown',function(e){
   if(e.key!=='Enter')return;
-  var v=this.value.trim().toLowerCase();this.value='';
+  var v=this.value.trim().toLowerCase();
+  this.value='';
   tAdd('<span class="tp">zahaand.dev:~$</span> <span style="color:var(--text)">'+v+'</span>');
   if(!v)return;
   var fn=CMDS[v];
-  if(!fn){var ru=document.documentElement.lang!=='en';
-    tAdd('<span class="to" style="color:var(--red)">'+(ru?'команда не найдена: ':'command not found: ')+v+'. '+(ru?'Попробуй ':'Try ')+'<span style="color:var(--blue)">help</span></span>');return;}
+  if(!fn){
+    var _ru=currentLang!=='en';
+    tAdd('<span class="to" style="color:var(--red)">'+(_ru?'команда не найдена: ':'command not found: ')+v+'. '+(_ru?'Попробуй ':'Try ')+'<span style="color:var(--blue)">help</span></span>');
+    return;
+  }
   var r=fn();
   if(r==='__clear__'){tOut.innerHTML='';return;}
   r.forEach(function(x){tAdd('<span class="to">'+x.v+'</span>');});
