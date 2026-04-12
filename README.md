@@ -48,12 +48,11 @@ Static portfolio website built as a single self-contained `index.html` file — 
 | `play` | 🐛 Hidden game: catch bugs before prod |
 | `clear` | Clear the terminal |
 
+**DevTools easter egg:** open browser console and run `hire()`.
+
 <img width="1552" height="922" alt="Снимок экрана — 2026-04-12 в 23 44 19" src="https://github.com/user-attachments/assets/d6c5277d-3470-48a6-ac91-f38ae31f11a3" />
 
 <img width="1552" height="922" alt="Снимок экрана — 2026-04-12 в 23 45 15" src="https://github.com/user-attachments/assets/5270d2de-9bcc-470a-8042-fe7bcbf6c674" />
-
-
-**DevTools easter egg:** open browser console and run `hire()`.
 
 ## Portfolio Projects
 
