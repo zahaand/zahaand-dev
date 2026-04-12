@@ -21,6 +21,18 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Andrei Zakharenkov","alternateName":"Андрей Захаренков","jobTitle":"Java Backend Developer","url":"https://zahaand.dev","email":"zahaand@gmail.com","telephone":"+79215800706","sameAs":["https://github.com/zahaand","https://t.me/zahaand"],"knowsAbout":["Java","Spring Boot","Apache Kafka","PostgreSQL","jOOQ","Hibernate","React","TypeScript","Telegram Bot API","Hexagonal Architecture","JWT RS256","Liquibase"]}
 </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108510324','ym');
+ym(108510324,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/108510324" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+<!-- /Yandex.Metrika counter -->
 <style>
 :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#21262d;--border2:#30363d;--text:#e6edf3;--text2:#c9d1d9;--muted:#8b949e;--dim:#484f58;--blue:#58a6ff;--green:#3fb950;--purple:#a371f7;--orange:#ffa657;--red:#f85149;--yellow:#e3b341;--shadow:rgba(0,0,0,0.3);}
 [data-theme="light"]{--bg:#ffffff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--border2:#afb8c1;--text:#1f2328;--text2:#424a53;--muted:#636c76;--dim:#9198a1;--blue:#0969da;--green:#1a7f37;--purple:#8250df;--orange:#bc4c00;--red:#cf222e;--yellow:#9a6700;--shadow:rgba(0,0,0,0.08);}
@@ -184,6 +196,18 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 .srv-drop-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:11px;color:var(--muted);cursor:pointer;transition:background .15s,color .15s;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;}
 .srv-drop-item:hover{background:var(--bg3);color:var(--text);}
 .srv-drop-item+.srv-drop-item{border-top:1px solid var(--border);}
+
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:var(--bg2);border-top:1px solid var(--border2);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;}
+.cookie-banner.hidden{display:none;}
+.cookie-text{color:var(--muted);line-height:1.6;max-width:700px;}
+.cookie-text a{color:var(--blue);text-decoration:underline;}
+.cookie-btn{padding:7px 18px;border-radius:6px;font-size:11px;font-family:inherit;cursor:pointer;border:none;background:var(--green);color:#fff;white-space:nowrap;transition:opacity .15s;}
+.cookie-btn:hover{opacity:0.85;}
+@media(max-width:600px){.cookie-banner{flex-direction:column;align-items:flex-start;padding:14px 16px;}.cookie-btn{width:100%;text-align:center;}}
+
+@media(max-width:768px){
+  .srv-card--active{border-color:var(--green) !important;box-shadow:0 0 0 1px var(--green) !important;}
+}
 </style>
 </head>
 <body>
@@ -399,8 +423,8 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
     </div>
     <div class="term-body" id="term-out">
       <div><span class="tp">zahaand.dev:~$</span> <span style="color:var(--text)">welcome</span></div>
-      <div class="to" style="color:var(--green);margin:4px 0;">Добро пожаловать в интерактивный шелл zahaand.dev 👋</div>
-      <div class="to">Введите <span class="t-hl">help</span> для списка команд.</div>
+      <div class="to" style="color:var(--green);margin:4px 0;" id="term-welcome">Добро пожаловать в интерактивный шелл zahaand.dev 👋</div>
+      <div class="to" id="term-welcome2">Введите <span class="t-hl">help</span> для списка команд.</div>
     </div>
     <div class="term-input-row">
       <span class="term-prompt-lbl">zahaand.dev:~$</span>
@@ -473,6 +497,8 @@ var T={
     ctTitle:'Готов к новым проектам!',ctSub:'Фриланс · Backend · Fullstack · Telegram Bots · Remote',
     btnCall:'📞 Позвонить',btnEmail:'Email',
     termHint:'help · whoami · skills · projects · services · contact · fact · play · clear',
+    termWelcome:'Добро пожаловать в интерактивный шелл zahaand.dev 👋',
+    termWelcome2:'Введите <span class="t-hl">help</span> для списка команд.',
     navLinks:['about','навыки','проекты','боты','услуги','контакты']
   },
   en:{
@@ -493,6 +519,8 @@ var T={
     ctTitle:'Ready for new projects!',ctSub:'Freelance · Backend · Fullstack · Telegram Bots · Remote',
     btnCall:'📞 Call',btnEmail:'Email',
     termHint:'help · whoami · skills · projects · services · contact · fact · play · clear',
+    termWelcome:'Welcome to zahaand.dev interactive shell 👋',
+    termWelcome2:'Type <span class="t-hl">help</span> to see available commands.',
     navLinks:['about','skills','projects','bots','services','contact']
   }
 };
@@ -531,9 +559,14 @@ function setLang(l){
   document.getElementById('btn-call').innerHTML=t.btnCall;
   document.getElementById('btn-email').textContent=t.btnEmail;
   document.getElementById('term-hint').textContent=t.termHint;
+  var tw=document.getElementById('term-welcome');
+  var tw2=document.getElementById('term-welcome2');
+  if(tw){tw.textContent=t.termWelcome;}
+  if(tw2){tw2.innerHTML=t.termWelcome2;}
   var links=document.querySelectorAll('.nav-link');
   t.navLinks.forEach(function(txt,i){if(links[i])links[i].textContent=txt;});
   document.documentElement.lang=l==='ru'?'ru':'en';
+  updateCookieLang(l);
 }
 
 // DEVTOOLS
@@ -647,7 +680,8 @@ tIn.addEventListener('keydown',function(e){
   tAdd('<span class="tp">zahaand.dev:~$</span> <span style="color:var(--text)">'+v+'</span>');
   if(!v)return;
   var fn=CMDS[v];
-  if(!fn){tAdd('<span class="to" style="color:var(--red)">команда не найдена: '+v+'. Попробуй <span style="color:var(--blue)">help</span></span>');return;}
+  if(!fn){var ru=document.documentElement.lang!=='en';
+    tAdd('<span class="to" style="color:var(--red)">'+(ru?'команда не найдена: ':'command not found: ')+v+'. '+(ru?'Попробуй ':'Try ')+'<span style="color:var(--blue)">help</span></span>');return;}
   var r=fn();
   if(r==='__clear__'){tOut.innerHTML='';return;}
   r.forEach(function(x){tAdd('<span class="to">'+x.v+'</span>');});
@@ -731,6 +765,69 @@ document.addEventListener('click',function(e){
     document.querySelectorAll('.srv-dropdown').forEach(function(d){d.classList.remove('open');});
   }
 });
+
+// COOKIE BANNER
+function acceptCookies(){
+  localStorage.setItem('cookies_accepted','1');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+(function(){
+  if(localStorage.getItem('cookies_accepted')==='1'){
+    var b=document.getElementById('cookie-banner');
+    if(b)b.classList.add('hidden');
+  }
+})();
+function updateCookieLang(l){
+  var t=document.getElementById('cookie-text');
+  var btn=document.getElementById('cookie-btn');
+  if(!t)return;
+  if(l==='en'){
+    t.innerHTML='We use cookies for site functionality and analytics (Yandex.Metrika). By continuing to use the site, you agree to our <a href="#" onclick="return false;">privacy policy</a>.';
+    if(btn)btn.textContent='Accept';
+  } else {
+    t.innerHTML='Мы используем файлы cookie для корректной работы сайта и аналитики (Яндекс.Метрика). Продолжая использовать сайт, вы соглашаетесь с <a href="#" onclick="return false;">политикой конфиденциальности</a>.';
+    if(btn)btn.textContent='Принять';
+  }
+}
+// LANG INIT — apply RU on load, fix race condition
+document.addEventListener('DOMContentLoaded',function(){
+  setLang('ru');
+  updateCookieLang('ru');
+  checkMobileHighlight();
+});
+function checkMobileHighlight(){
+  var cards=document.querySelectorAll('.srv-card');
+  if(window.innerWidth<=768&&cards.length>0){
+    cards[0].classList.add('srv-card--active');
+  } else {
+    if(cards.length>0)cards[0].classList.remove('srv-card--active');
+  }
+}
+window.addEventListener('resize',checkMobileHighlight);
+// Terminal EN help texts
+var TERM_EN={
+  help:[
+    'Available commands:',
+    '  <span class="t-hl">whoami</span>    — about me',
+    '  <span class="t-hl">skills</span>    — tech stack',
+    '  <span class="t-hl">projects</span>  — portfolio projects',
+    '  <span class="t-hl">services</span>  — what I can build',
+    '  <span class="t-hl">contact</span>   — get in touch',
+    '  <span class="t-hl">fact</span>      — random fact 🎲',
+    '  <span class="t-hl">play</span>      — 🐛 catch bugs before prod',
+    '  <span class="t-hl">clear</span>     — clear terminal',
+  ],
+  notfound:'command not found'
+};
+
 </script>
+
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-text" id="cookie-text">
+    Мы используем файлы cookie для корректной работы сайта и аналитики (Яндекс.Метрика).
+    Продолжая использовать сайт, вы соглашаетесь с <a href="#" onclick="return false;">политикой конфиденциальности</a>.
+  </div>
+  <button class="cookie-btn" id="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
 </body>
 </html>
