@@ -213,7 +213,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 <body>
 
 <nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-logo">zahaand<span>.</span>dev</div>
+  <a href="/" class="nav-logo" style="text-decoration:none;">zahaand<span>.</span>dev</a>
   <div class="nav-right">
     <a class="nav-link" href="#about">about</a>
     <a class="nav-link" href="#skills">навыки</a>
@@ -525,6 +525,7 @@ var T={
   }
 };
 function setLang(l){
+  localStorage.setItem('lang',l);
   var t=T[l];
   document.getElementById('lbtn-ru').classList.toggle('active',l==='ru');
   document.getElementById('lbtn-en').classList.toggle('active',l==='en');
@@ -653,7 +654,8 @@ var CMDS={
     {v:'<span class="t-hl">🐙</span> <a href="https://github.com/zahaand" style="color:var(--blue)">github.com/zahaand</a>'},
   ];},
   fact:function(){
-    var facts=[
+    var ru=document.documentElement.lang!=='en';
+    var factsRu=[
       'LifeSync Backend: 32 REST endpoint, 6 Kafka consumers, 19 Liquibase migrations. Всё это — один Maven multi-module проект.',
       'Hexagonal architecture потому что: бизнес-логика не должна знать что снаружи PostgreSQL, а не MongoDB.',
       'smart-task-bot умеет выбирать язык (EN/RU) и часовой пояс прямо в чате. Потому что пользователи живут не только в Москве.',
@@ -663,8 +665,20 @@ var CMDS={
       'LifeSync Frontend: Tailwind v4 + shadcn/ui Nova + TanStack Query v5. Написан на TypeScript без единого <code style="color:var(--orange)">any</code>.',
       'Kafka в LifeSync — не хайп. Это разделение домена уведомлений от домена привычек. Bounded contexts в деле.',
     ];
+    var factsEn=[
+      'LifeSync Backend: 32 REST endpoints, 6 Kafka consumers, 19 Liquibase migrations — all in one Maven multi-module project.',
+      'Hexagonal architecture because: business logic should not know whether PostgreSQL or MongoDB is outside.',
+      'smart-task-bot supports language (EN/RU) and timezone selection right in the chat. Because users live outside Moscow too.',
+      '<code style="color:var(--orange)">git commit -m "fix"</code> is not my style. Conventional Commits, meaningful messages every time.',
+      '382 tests in smart-task-bot. Because "works on my machine" is not production.',
+      'jOOQ vs Hibernate: I use both. jOOQ for SQL control, Hibernate for development speed.',
+      'LifeSync Frontend: Tailwind v4 + shadcn/ui Nova + TanStack Query v5. Written in TypeScript with zero <code style="color:var(--orange)">any</code>.',
+      'Kafka in LifeSync is not hype. It separates the notifications domain from the habits domain. Bounded contexts in action.',
+    ];
+    var facts=ru?factsRu:factsEn;
     return[{v:'<span class="t-val">$ fact --random</span>'},{v:facts[Math.floor(Math.random()*facts.length)]}];
   },
+  
   play:function(){setTimeout(openGame,150);return[
     {v:'<span class="t-ok">$ ./catch-bugs --before-prod</span>'},
     {v:'Загружаю игру... Лови баги до того как они уйдут в прод! 🐛'},
@@ -791,8 +805,9 @@ function updateCookieLang(l){
 }
 // LANG INIT — apply RU on load, fix race condition
 document.addEventListener('DOMContentLoaded',function(){
-  setLang('ru');
-  updateCookieLang('ru');
+  var savedLang=localStorage.getItem('lang')||'ru';
+  setLang(savedLang);
+  updateCookieLang(savedLang);
   checkMobileHighlight();
 });
 function checkMobileHighlight(){
