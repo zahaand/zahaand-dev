@@ -173,6 +173,8 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 .game-close{margin-top:12px;font-size:10px;color:#484f58;cursor:pointer;border:1px solid #484f58;padding:4px 12px;border-radius:4px;}.game-close:hover{color:#8b949e;border-color:#8b949e;}
 /* RESPONSIVE */
 @media(max-width:768px){
+  .srv-card--active{border-color:var(--green);box-shadow:0 0 0 1px var(--green);}
+  .srv-card--active .srv-tag{color:var(--green);border-color:var(--green);}
   .nav{padding:12px 16px;}.nav-right .nav-link{display:none;}
   .hero{grid-template-columns:1fr;padding:28px 16px 24px;gap:0;}
   .photo-wrap{flex-direction:row;align-items:center;gap:16px;margin-bottom:16px;}.photo{width:80px;height:80px;}
@@ -206,9 +208,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 .cookie-btn:hover{opacity:0.85;}
 @media(max-width:600px){.cookie-banner{flex-direction:column;align-items:flex-start;padding:14px 16px;}.cookie-btn{width:100%;text-align:center;}}
 
-@media(max-width:768px){
-  .srv-card--active{border-color:var(--green) !important;box-shadow:0 0 0 1px var(--green) !important;}
-}
+
 </style>
 </head>
 <body>
@@ -355,7 +355,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 <section id="services" class="section" style="padding-top:36px;" aria-label="Services">
   <div class="sec-hdr"><span class="sec-num">04</span><span class="sec-label" id="s4-label">// services</span><div class="sec-line"></div></div>
   <div class="srv-grid">
-    <div class="srv-card">
+    <div class="srv-card" onclick="selectSrvCard(this)">
       <div class="srv-title" id="srv1-t">Backend-сервис</div>
       <div class="srv-desc" id="srv1-d">Серверная логика с нуля: REST API, авторизация, работа с базой данных, события через Kafka, интеграции, уведомления. Чистая архитектура, тесты, API-документация.</div>
       <div class="srv-tags"><span class="srv-tag">Java 21</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">PostgreSQL</span><span class="srv-tag">Kafka</span><span class="srv-tag">JWT</span><span class="srv-tag">Swagger</span></div>
@@ -367,7 +367,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
     </div>
-    <div class="srv-card">
+    <div class="srv-card" onclick="selectSrvCard(this)">
       <div class="srv-title" id="srv2-t">Fullstack веб-приложение</div>
       <div class="srv-desc" id="srv2-d">Полноценное веб-приложение: React-фронтенд + Java-бэкенд. Дашборды, личные кабинеты, SaaS-инструменты, B2B-продукты. Адаптивный интерфейс, TypeScript, деплой.</div>
       <div class="srv-tags"><span class="srv-tag">React 18</span><span class="srv-tag">TypeScript</span><span class="srv-tag">Java</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">PostgreSQL</span></div>
@@ -379,7 +379,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
       </div>
     </div>
     </div>
-    <div class="srv-card">
+    <div class="srv-card" onclick="selectSrvCard(this)">
       <div class="srv-title" id="srv3-t">Telegram Bot</div>
       <div class="srv-desc" id="srv3-d">Боты любой сложности: inline-меню, БД, напоминания, интеграции с внешними сервисами, многоязычность, личный кабинет пользователя. Деплой и поддержка.</div>
       <div class="srv-tags"><span class="srv-tag">Java 21</span><span class="srv-tag">Spring Boot</span><span class="srv-tag">Telegram Bot API</span><span class="srv-tag">PostgreSQL</span></div>
@@ -392,7 +392,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
     </div>
     </div>
   
-    <div class="srv-card">
+    <div class="srv-card" onclick="selectSrvCard(this)">
       <div class="srv-title" id="srv4-t">Создание сайта</div>
       <div class="srv-desc" id="srv4-d">Разработка сайта под ключ: лендинг, визитка, корпоративный сайт, страница услуг. Адаптивный дизайн, тёмная и светлая тема, SEO-оптимизация, быстрая загрузка, деплой.</div>
       <div class="srv-tags"><span class="srv-tag">HTML</span><span class="srv-tag">CSS</span><span class="srv-tag">JavaScript</span><span class="srv-tag">Vercel</span><span class="srv-tag">SEO</span></div>
@@ -870,17 +870,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var savedLang=localStorage.getItem('lang')||'ru';
   setLang(savedLang);
   updateCookieLang(savedLang);
-  checkMobileHighlight();
 });
-function checkMobileHighlight(){
-  var cards=document.querySelectorAll('.srv-card');
-  if(window.innerWidth<=768&&cards.length>0){
-    cards[0].classList.add('srv-card--active');
-  } else {
-    if(cards.length>0)cards[0].classList.remove('srv-card--active');
-  }
-}
-window.addEventListener('resize',checkMobileHighlight);
 // Terminal EN help texts
 var TERM_EN={
   help:[
