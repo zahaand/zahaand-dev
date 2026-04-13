@@ -194,10 +194,10 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 .srv-btn-wrap{position:relative;width:100%;margin-top:auto;}
 .srv-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid var(--blue);border-radius:6px;padding:8px 14px;font-size:11px;color:var(--blue);cursor:pointer;font-family:inherit;transition:background .15s,color .15s;width:100%;font-weight:500;}
 .srv-btn:hover{background:var(--blue);color:#fff;}
-.srv-dropdown{display:none;position:absolute;bottom:calc(100% + 6px);left:0;right:0;background:var(--bg2);border:1px solid var(--border2);border-radius:7px;overflow:hidden;z-index:50;box-shadow:0 4px 16px var(--shadow);}
+.srv-dropdown{display:none;position:absolute;bottom:calc(100% + 6px);left:0;right:0;background:var(--bg2);border:1px solid var(--green);border-radius:7px;overflow:hidden;z-index:50;box-shadow:0 4px 16px var(--shadow);}
 .srv-dropdown.open{display:block;}
-.srv-drop-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:11px;color:var(--muted);cursor:pointer;transition:background .15s,color .15s;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;}
-.srv-drop-item:hover{background:var(--bg3);color:var(--text);}
+.srv-drop-item{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:11px;color:var(--text);cursor:pointer;transition:background .15s,color .15s;border:none;background:transparent;width:100%;font-family:inherit;text-align:left;}
+.srv-drop-item:hover{background:var(--bg3);color:var(--green);}
 .srv-drop-item+.srv-drop-item{border-top:1px solid var(--border);}
 
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:var(--bg2);border-top:1px solid var(--border2);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;}
@@ -886,13 +886,44 @@ var TERM_EN={
   ],
   notfound:'command not found'
 };
+// SERVICE CARD MOBILE SELECTION
+function selectSrvCard(card){
+  if(window.innerWidth>768)return;
+  document.querySelectorAll('.srv-card').forEach(function(c){
+    c.classList.remove('srv-card--active');
+  });
+  card.classList.add('srv-card--active');
+}
+(function initSrvCards(){
+  function init(){
+    if(window.innerWidth<=768){
+      var cards=document.querySelectorAll('.srv-card');
+      if(cards.length>0)cards[0].classList.add('srv-card--active');
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else {
+    init();
+  }
+  window.addEventListener('resize',function(){
+    if(window.innerWidth>768){
+      document.querySelectorAll('.srv-card').forEach(function(c){c.classList.remove('srv-card--active');});
+    } else {
+      if(!document.querySelector('.srv-card--active')){
+        var cards=document.querySelectorAll('.srv-card');
+        if(cards.length>0)cards[0].classList.add('srv-card--active');
+      }
+    }
+  });
+})();
 
 </script>
 
 <div class="cookie-banner" id="cookie-banner">
   <div class="cookie-text" id="cookie-text">
     Мы используем файлы cookie для корректной работы сайта и аналитики (Яндекс.Метрика).
-    Продолжая использовать сайт, вы соглашаетесь с <a href="#" onclick="return false;">политикой конфиденциальности</a>.
+    Продолжая использовать сайт, вы соглашаетесь с <a href="privacy.html">политикой конфиденциальности</a>.
   </div>
   <button class="cookie-btn" id="cookie-btn" onclick="acceptCookies()">Принять</button>
 </div>
