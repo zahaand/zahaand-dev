@@ -209,6 +209,23 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 @media(max-width:600px){.cookie-banner{flex-direction:column;align-items:flex-start;padding:14px 16px;}.cookie-btn{width:100%;text-align:center;}}
 
 
+
+/* LIBRARY CARD */
+.lib-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .15s,box-shadow .15s;display:block;}
+.lib-card:hover{border-color:var(--border2);box-shadow:0 2px 12px var(--shadow);}
+.lib-code{background:#0d1117;border-bottom:1px solid var(--border);padding:14px 16px;font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:10px;line-height:1.8;overflow:hidden;}
+[data-theme="light"] .lib-code{background:#1e1e2e;}
+.lib-code-hdr{display:flex;gap:5px;align-items:center;margin-bottom:10px;}
+.lib-code-file{font-size:9px;color:#484f58;margin-left:6px;}
+.lc-kw{color:#ff79c6;}.lc-fn{color:#50fa7b;}.lc-str{color:#f1fa8c;}.lc-cm{color:#6272a4;}.lc-id{color:#8be9fd;}.lc-op{color:#ff79c6;}.lc-num{color:#bd93f9;}.lc-res{color:#50fa7b;}
+.lib-body{padding:14px 16px;}
+.lib-name{font-size:12px;color:var(--blue);font-weight:500;margin-bottom:6px;}
+.lib-badge{font-size:9px;padding:1px 7px;border-radius:3px;margin-left:6px;vertical-align:middle;background:#0f2a1a;color:var(--green);border:1px solid #238636;}
+[data-theme="light"] .lib-badge{background:#dafbe1;border-color:#1a7f37;}
+.lib-desc{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.lib-stack{display:flex;flex-wrap:wrap;gap:4px;}
+.lib-tag{font-size:10px;padding:2px 6px;background:#0c1d36;border:1px solid #1f6feb;border-radius:3px;color:var(--blue);}
+[data-theme="light"] .lib-tag{background:#ddf4ff;border-color:#0969da;color:#0969da;}
 </style>
 </head>
 <body>
@@ -222,6 +239,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
     <a class="nav-link" href="#about">about</a>
     <a class="nav-link" href="#skills">навыки</a>
     <a class="nav-link" href="#projects">проекты</a>
+    <a class="nav-link" href="#libs">библиотеки</a>
     <a class="nav-link" href="#bots">боты</a>
     <a class="nav-link" href="#services">услуги</a>
     <a class="nav-link" href="#contact">контакты</a>
@@ -317,13 +335,52 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
     <div class="git-log">
       <div class="commit"><span class="chash">a1b2c3d</span><div class="cmsg"><strong>LifeSync Backend v1.0.0</strong><span class="ctag ct-feat">feat</span> &mdash; 32 REST endpoints &middot; 6 Kafka consumers &middot; 19 Liquibase migrations &middot; 251 tests</div></div>
       <div class="commit"><span class="chash">e4f5a6b</span><div class="cmsg"><strong>LifeSync Frontend v1.0.0</strong><span class="ctag ct-feat">feat</span> &mdash; React 18 &middot; TypeScript &middot; Vite &middot; Tailwind v4 &middot; shadcn/ui &middot; Vercel deploy</div></div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- LIBRARIES -->
+<section id="libs" class="section" style="padding-top:36px;" aria-label="Libraries">
+  <div class="sec-hdr"><span class="sec-num">03</span><span class="sec-label" id="s_libs-label">// libraries</span><div class="sec-line"></div></div>
+  <div class="projects-grid">
+    <a class="lib-card" href="https://github.com/zahaand/data-expression-parser" target="_blank" rel="noopener" title="View on GitHub">
+      <div class="lib-code">
+        <div class="lib-code-hdr">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="lib-code-file">ExpressionService.java</span>
+        </div>
+        <div><span class="lc-cm">// boolean expression</span></div>
+        <div><span class="lc-kw">var</span> <span class="lc-id">ctx</span> = <span class="lc-fn">EvaluationContext</span>.<span class="lc-fn">of</span>(<span class="lc-fn">Map</span>.<span class="lc-fn">of</span>(</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="lc-str">"age"</span>, <span class="lc-num">25.0</span>,&nbsp; <span class="lc-str">"status"</span>, <span class="lc-str">"active"</span></div>
+        <div>));</div>
+        <div><span class="lc-kw">boolean</span> <span class="lc-id">ok</span> = <span class="lc-id">parser</span>.<span class="lc-fn">evaluateBoolean</span>(</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="lc-str">"[age] &gt; 18 AND [status] == 'active'"</span>, <span class="lc-id">ctx</span></div>
+        <div>); <span class="lc-cm">// → true</span></div>
+        <div style="margin-top:6px;"><span class="lc-cm">// arithmetic expression</span></div>
+        <div><span class="lc-kw">double</span> <span class="lc-id">total</span> = <span class="lc-id">parser</span>.<span class="lc-fn">evaluateDouble</span>(</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="lc-str">"[price] * [qty] * (1 - [discount])"</span>, <span class="lc-id">ctx</span></div>
+        <div>); <span class="lc-cm">// → 270.0</span></div>
+      </div>
+      <div class="lib-body">
+        <div class="lib-name">data-expression-parser <span class="lib-badge">v1.2.0</span></div>
+        <div class="lib-desc" id="lib-desc">Spring Boot Starter для парсинга и вычисления бизнес-выражений над именованными полями. ANTLR4-грамматика, кастомные функции, валидация синтаксиса. 273 теста.</div>
+        <div class="lib-stack"><span class="lib-tag">Java 21</span><span class="lib-tag">ANTLR4</span><span class="lib-tag">Spring Boot Starter</span><span class="lib-tag">Maven Multi-Module</span></div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-top:18px;">
+    <div class="sec-hdr" style="margin-bottom:12px;"><span class="sec-label" style="color:var(--dim);">// git log --oneline</span><div class="sec-line"></div></div>
+    <div class="git-log">
+      <div class="commit"><span class="chash">c9d0e1f</span><div class="cmsg"><strong>data-expression-parser v1.2.0</strong><span class="ctag ct-feat">feat</span> &mdash; ANTLR4 grammar &middot; Spring Boot Starter &middot; custom functions &middot; 273 tests</div></div>
     </div>
   </div>
 </section>
 
 <!-- TELEGRAM BOTS -->
 <section id="bots" class="section" style="padding-top:36px;" aria-label="Telegram Bots">
-  <div class="sec-hdr"><span class="sec-num">03</span><span class="sec-label" id="s3-label">// telegram bots</span><div class="sec-line"></div></div>
+  <div class="sec-hdr"><span class="sec-num">04</span><span class="sec-label" id="s3-label">// telegram bots</span><div class="sec-line"></div></div>
   <a class="bot-card" href="https://github.com/zahaand/smart-task-bot" target="_blank" rel="noopener" title="View on GitHub">
     <div class="bot-inner">
       <div class="bot-phone-wrap">
@@ -353,7 +410,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 
 <!-- SERVICES -->
 <section id="services" class="section" style="padding-top:36px;" aria-label="Services">
-  <div class="sec-hdr"><span class="sec-num">04</span><span class="sec-label" id="s4-label">// services</span><div class="sec-line"></div></div>
+  <div class="sec-hdr"><span class="sec-num">05</span><span class="sec-label" id="s4-label">// services</span><div class="sec-line"></div></div>
   <div class="srv-grid">
     <div class="srv-card" onclick="selectSrvCard(this)">
       <div class="srv-title" id="srv1-t">Backend-сервис</div>
@@ -409,7 +466,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 
 <!-- RECOMMENDATION -->
 <section class="section" style="padding-top:36px;" aria-label="Recommendation">
-  <div class="sec-hdr"><span class="sec-num">05</span><span class="sec-label" id="s6-label">// recommendation.txt &mdash; МКСКОМ 2023&ndash;2026</span><div class="sec-line"></div></div>
+  <div class="sec-hdr"><span class="sec-num">06</span><span class="sec-label" id="s6-label">// recommendation.txt &mdash; МКСКОМ 2023&ndash;2026</span><div class="sec-line"></div></div>
   <div class="letter-card">
     <div class="letter-q" id="letter-q">«Андрей Игоревич неоднократно проявлял инициативу при выявлении потенциальных рисков на ранних этапах, предлагая альтернативные подходы, которые позволяли избежать технического долга и сократить сроки реализации. Ответственный, дисциплинированный и коммуникабельный специалист с выраженными лидерскими качествами.»</div>
     <div class="letter-author">&mdash; Ю.А. Климова, руководитель отдела управления персоналом</div>
@@ -419,7 +476,7 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 
 <!-- TERMINAL -->
 <section id="terminal" class="term-section" style="padding-top:36px;" aria-label="Interactive terminal">
-  <div class="sec-hdr" style="margin-bottom:14px;"><span class="sec-num">06</span><span class="sec-label" id="s5-label">// interactive terminal &mdash; try it</span><div class="sec-line"></div></div>
+  <div class="sec-hdr" style="margin-bottom:14px;"><span class="sec-num">07</span><span class="sec-label" id="s5-label">// interactive terminal &mdash; try it</span><div class="sec-line"></div></div>
   <div class="term-wrap">
     <div class="term-topbar">
       <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
@@ -488,10 +545,12 @@ var T={
     heroSub:'Java Backend Developer &middot; <strong>5+ лет опыта</strong> &middot; ex-тимлид &middot; фриланс',
     jExp:'"5 лет (МКСКОМ, 2023&ndash;2026)"',jStatus:'"доступен для найма"',
     badgeOpen:'Открыт к работе',photoLbl:'Андрей<br>Захаренков',
-    s1:'// навыки и технологии',s2:'// проекты',s3:'// telegram bots',s4:'// услуги',s5:'// интерактивный терминал',s6:'// рекомендация',
+    s1:'// навыки и технологии',s2:'// проекты',s_libs:'// библиотеки',
+    s3:'// telegram bots',s4:'// услуги',s5:'// интерактивный терминал',s6:'// рекомендация',
     p1:'Бэкенд трекера привычек и целей. Гексагональная архитектура, 6 Maven-модулей, Kafka EDA, JWT RS256, Telegram-уведомления. 32 REST endpoint, 6 Kafka consumers, 251 тест.',
     p2:'React SPA для трекинга привычек и целей. Дашборд, стрики, история выполнения, профиль с умным приветствием. Полная типизация TypeScript.',
     p3:'Telegram-бот для управления задачами: напоминания, inline-календарь, выбор языка (EN/RU) и часового пояса прямо в чате. Полноценный жизненный цикл задачи. Задеплоен на Railway.',
+    libDesc:'Spring Boot Starter для парсинга и вычисления бизнес-выражений над именованными полями. ANTLR4-грамматика, кастомные функции, валидация синтаксиса. 273 теста.',
     srv1t:'Backend-сервис',srv1d:'Серверная логика с нуля: REST API, авторизация, работа с базой данных, события через Kafka, интеграции, уведомления. Чистая архитектура, тесты, API-документация.',
     srv2t:'Fullstack веб-приложение',srv2d:'Полноценное веб-приложение: React-фронтенд + Java-бэкенд. Дашборды, личные кабинеты, SaaS-инструменты, B2B-продукты. Адаптивный интерфейс, TypeScript, деплой.',
     srv3t:'Telegram Bot',srv3d:'Боты любой сложности: inline-меню, БД, напоминания, интеграции с внешними сервисами, многоязычность, личный кабинет. Деплой и поддержка.',
@@ -503,17 +562,20 @@ var T={
     termHint:'help · whoami · skills · projects · services · contact · fact · play · clear',
     termWelcome:'Добро пожаловать в интерактивный шелл zahaand.dev 👋',
     termWelcome2:'Введите <span class="t-hl">help</span> для списка команд.',
-    navLinks:['about','навыки','проекты','боты','услуги','контакты']
+    navLinks:['about','навыки','проекты','библиотеки','боты','услуги','контакты']
   },
   en:{
     heroName:'<em>Zakharenkov</em> Andrei',
     heroSub:'Java Backend Developer &middot; <strong>5+ years exp</strong> &middot; ex-team-lead &middot; freelance',
     jExp:'"5 years (MKSKOM, 2023&ndash;2026)"',jStatus:'"available for hire"',
     badgeOpen:'Open to work',photoLbl:'Andrei<br>Zakharenkov',
-    s1:'// skills & technologies',s2:'// projects',s3:'// telegram bots',s4:'// services',s5:'// interactive terminal',s6:'// recommendation',
+    s1:'// skills & technologies',s2:'// projects',s_libs:'// библиотеки',
+    s_libs:'// libraries',
+    s3:'// telegram bots',s4:'// services',s5:'// interactive terminal',s6:'// recommendation',
     p1:'Habit & goals tracker backend. Hexagonal architecture, 6 Maven modules, Kafka EDA, JWT RS256, Telegram notifications. 32 REST endpoints, 6 Kafka consumers, 251 tests.',
     p2:'React SPA for habit & goal tracking. Dashboard, streaks, history drawer, smart greeting. Full TypeScript coverage.',
     p3:'Telegram task bot: reminders, inline calendar, EN/RU, timezone selection in chat. Full task lifecycle. Deployed on Railway.',
+    libDesc:'Spring Boot Starter for parsing and evaluating business expressions over named data fields. ANTLR4 grammar, custom functions, syntax validation. 273 tests.',
     srv1t:'Backend Service',srv1d:'Server-side logic from scratch: REST API, auth, database, Kafka events, integrations, notifications. Clean architecture, tests, API docs.',
     srv2t:'Fullstack Web App',srv2d:'Complete web application: React frontend + Java backend. Dashboards, user portals, SaaS tools, B2B products. Responsive UI, TypeScript, deployment.',
     srv3t:'Telegram Bot',srv3d:'Bots of any complexity: inline menus, database, reminders, external integrations, multilingual, user accounts. Deployment & support.',
@@ -525,7 +587,7 @@ var T={
     termHint:'help · whoami · skills · projects · services · contact · fact · play · clear',
     termWelcome:'Welcome to zahaand.dev interactive shell 👋',
     termWelcome2:'Type <span class="t-hl">help</span> to see available commands.',
-    navLinks:['about','skills','projects','bots','services','contact']
+    navLinks:['about','skills','projects','libraries','bots','services','contact']
   }
 };
 var currentLang=localStorage.getItem('lang')||'ru';
@@ -561,6 +623,8 @@ function setLang(l){
   document.getElementById('srv1-btn').textContent=t.srv1btn;
   document.getElementById('srv2-btn').textContent=t.srv2btn;
   document.getElementById('srv3-btn').textContent=t.srv3btn;
+  if(document.getElementById('s_libs-label'))document.getElementById('s_libs-label').textContent=t.s_libs;
+  if(document.getElementById('lib-desc'))document.getElementById('lib-desc').textContent=t.libDesc;
   if(document.getElementById('srv4-t')){document.getElementById('srv4-t').textContent=t.srv4t;document.getElementById('srv4-d').textContent=t.srv4d;document.getElementById('srv4-btn').textContent=t.srv4btn;}
   document.getElementById('letter-q').textContent=t.letterQ;
   document.getElementById('ct-title').textContent=t.ctTitle;
