@@ -62,6 +62,12 @@ Static portfolio website built as a single self-contained `index.html` file — 
 | [LifeSync Frontend](https://github.com/zahaand/lifesync-frontend) | React 18, TypeScript, Vite, Tailwind v4, shadcn/ui | ✅ v1.0.0 |
 | [smart-task-bot](https://github.com/zahaand/smart-task-bot) | Java 21, Spring Boot, Telegram Bot API, PostgreSQL | ✅ v1.0.0 |
 
+## Libraries
+
+| Library | Stack | Status |
+|---------|-------|--------|
+| [data-expression-parser](https://github.com/zahaand/data-expression-parser) | Java 21, ANTLR4, Spring Boot Starter, Maven Multi-Module | ✅ v1.2.0 |
+
 ## Technology Stack (Website)
 
 | Concern | Technology |
@@ -151,6 +157,7 @@ Indexed in:
 - [LifeSync Backend](https://github.com/zahaand/lifesync-backend) — Java 21, Spring Boot 3.5, PostgreSQL 16, Apache Kafka
 - [LifeSync Frontend](https://github.com/zahaand/lifesync-frontend) — React 18, TypeScript 5, Vite, Tailwind CSS v4
 - [smart-task-bot](https://github.com/zahaand/smart-task-bot) — Java 21, Spring Boot, Telegram Bot API, 382 tests
+- [data-expression-parser](https://github.com/zahaand/data-expression-parser) — Java 21, ANTLR4 4.13, Spring Boot Starter, 273 tests
 
 ---
 
@@ -200,6 +207,12 @@ Indexed in:
 | [LifeSync Backend](https://github.com/zahaand/lifesync-backend) | Java 21, Spring Boot 3.5, Kafka, jOOQ, PostgreSQL | ✅ v1.0.0 |
 | [LifeSync Frontend](https://github.com/zahaand/lifesync-frontend) | React 18, TypeScript, Vite, Tailwind v4, shadcn/ui | ✅ v1.0.0 |
 | [smart-task-bot](https://github.com/zahaand/smart-task-bot) | Java 21, Spring Boot, Telegram Bot API, PostgreSQL | ✅ v1.0.0 |
+
+## Библиотеки
+
+| Библиотека | Стек | Статус |
+|------------|------|--------|
+| [data-expression-parser](https://github.com/zahaand/data-expression-parser) | Java 21, ANTLR4, Spring Boot Starter, Maven Multi-Module | ✅ v1.2.0 |
 
 ## Стек технологий (сайт)
 
@@ -290,3 +303,4 @@ index.html
 - [LifeSync Backend](https://github.com/zahaand/lifesync-backend) — Java 21, Spring Boot 3.5, PostgreSQL 16, Apache Kafka
 - [LifeSync Frontend](https://github.com/zahaand/lifesync-frontend) — React 18, TypeScript 5, Vite, Tailwind CSS v4
 - [smart-task-bot](https://github.com/zahaand/smart-task-bot) — Java 21, Spring Boot, Telegram Bot API, 382 теста
+- [data-expression-parser](https://github.com/zahaand/data-expression-parser) — Java 21, ANTLR4 4.13, Spring Boot Starter, 273 теста
