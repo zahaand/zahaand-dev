@@ -232,6 +232,9 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
 .rec-download{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:7px 14px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:inherit;font-size:11px;cursor:pointer;text-decoration:none;transition:border-color .15s,color .15s;}
 .rec-download:hover{border-color:var(--green);color:var(--green);}
 .rec-download svg{flex-shrink:0;}
+
+.resume-btn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:8px 16px;border-radius:6px;border:1px solid var(--green);background:transparent;color:var(--green);font-family:inherit;font-size:11px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .15s,color .15s;}
+.resume-btn:hover{background:var(--green);color:#fff;}
 </style>
 </head>
 <body>
@@ -292,6 +295,10 @@ footer{padding:16px 40px;border-top:1px solid var(--border);display:flex;justify
       <span class="badge badge-b">Fullstack</span>
       <span class="badge badge-p">Telegram Bots</span>
     </div>
+    <a class="resume-btn" id="resume-btn" href="/resume.pdf" download="Zakharenkov_Andrei_Resume.pdf" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1v9M8 10l-3-3M8 10l3-3M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="resume-btn-label">Скачать резюме (PDF)</span>
+    </a>
   </div>
   <div class="photo-wrap">
     <div class="photo"><img id="portrait" alt="Andrei Zakharenkov — Java Backend Developer"/></div>
@@ -556,7 +563,8 @@ var T={
     heroName:'<em>Захаренков</em> Андрей',
     heroSub:'Java Backend Developer &middot; <strong>5+ лет опыта</strong> &middot; ex-тимлид',
     jExp:'"5 лет (МКСКОМ, 2023&ndash;2026)"',jStatus:'"open to work"',
-    badgeOpen:'Открыт к работе',photoLbl:'Андрей<br>Захаренков',
+    badgeOpen:'Открыт к работе',
+    resumeBtn:'Скачать резюме (PDF)',photoLbl:'Андрей<br>Захаренков',
     s1:'// навыки и технологии',s2:'// проекты',s_libs:'// библиотеки',
     s3:'// telegram bots',s4:'// что умею',s5:'// интерактивный терминал',s6:'// рекомендация',
     p1:'Бэкенд трекера привычек и целей. Гексагональная архитектура, 6 Maven-модулей, Kafka EDA, JWT RS256, Telegram-уведомления. 32 REST endpoint, 6 Kafka consumers, 251 тест.',
@@ -581,7 +589,8 @@ var T={
     heroName:'<em>Zakharenkov</em> Andrei',
     heroSub:'Java Backend Developer &middot; <strong>5+ years exp</strong> &middot; ex-team-lead',
     jExp:'"5 years (MKSKOM, 2023&ndash;2026)"',jStatus:'"open to work"',
-    badgeOpen:'Open to work',photoLbl:'Andrei<br>Zakharenkov',
+    badgeOpen:'Open to work',
+    resumeBtn:'Download resume (PDF)',photoLbl:'Andrei<br>Zakharenkov',
     s1:'// skills & technologies',s2:'// projects',s_libs:'// библиотеки',
     s_libs:'// libraries',
     s3:'// telegram bots',s4:'// what I build',s5:'// interactive terminal',s6:'// recommendation',
@@ -618,6 +627,7 @@ function setLang(l){
   document.getElementById('j-exp').innerHTML=t.jExp;
   document.getElementById('j-status').textContent=t.jStatus;
   document.getElementById('badge-open').textContent=t.badgeOpen;
+  if(document.getElementById('resume-btn-label'))document.getElementById('resume-btn-label').textContent=t.resumeBtn;
   document.getElementById('photo-lbl').innerHTML=t.photoLbl;
   document.getElementById('s1-label').textContent=t.s1;
   document.getElementById('s2-label').textContent=t.s2;
