@@ -19,7 +19,7 @@ Static portfolio website built as a single self-contained `index.html` file — 
 
 **Live:** [zahaand.dev](https://zahaand.dev)
 
-<img width="1552" height="927" alt="Снимок экрана — 2026-04-21 в 20 02 36" src="https://github.com/user-attachments/assets/e451d6da-cda4-4b23-aeed-4c0c9e2dc77c" />
+<img width="1552" height="922" alt="Снимок экрана — 2026-04-21 в 21 33 47" src="https://github.com/user-attachments/assets/204fd301-4bd4-49d5-98b0-ad3606bf499e" />
 
 ## Features
 
